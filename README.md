@@ -193,21 +193,15 @@ CICLO COM PREDIÇÃO:  11  CICLO SEM PREDIÇÃO:  13
 Melhoria de performance: 15.38%
 ```
 
-## Melhorias Futuras
+## Melhorias Implementadas
 
-- Integração de um algoritmo de predição no simulador, visando aprimorar o desempenho.
+- Tabela de predição (self.prediction_table): Armazena a predição de 32 instruções de desvio (0 ou 1) para indicar se o desvio será tomado ou não.
+- Mecanismo de predição: Verifica a tabela de predição na fase de Busca (IF) e ajusta o PC com base na predição.
+- Verificação da predição: No estágio de Execução (EX), verifica se a predição estava correta e, se não, invalida as instruções no pipeline e ajusta o PC.
+- Contagem de predições corretas e incorretas: Coleta estatísticas durante a execução.
+- Invalidação do pipeline: Invalida as instruções no pipeline se a predição estiver incorreta.
+- Execução sem predição: Mantém a execução sem predição de desvios, como já estava implementado.
 
-- Implementação de um mecanismo de predição para indicar qual será a próxima instrução a ser buscada, com a opção de manipular o Program Counter (PC) se ativado.
-
-- Adição de um mecanismo para verificar a precisão da predição e atualizar a tabela de predição no estágio de execução, após o resultado da instrução condicional ser conhecido.
-
-- Introdução de um sistema de invalidação das instruções no caso de predições incorretas.
-
-- Funcionalidade para desativar a predição, permitindo maior controle sobre o comportamento do simulador.
-
-- Geração de estatísticas detalhadas sobre instruções executadas e instruções inválidas devido a predições incorretas.
-
-- Utilização de uma tabela de predição baseada em um vetor de 32 valores (unsigned char predicao[32]).
 
 ## Licença
 
